@@ -12,19 +12,62 @@
 <body>
   <div class="layout">
     <div class="header">
-      <img src="images/logo 1.png" alt="mobile logo">
-      <ion-icon name="people"></ion-icon>
+      <img src="images/logo 1.png" alt="mobile logo" onclick="openSelectionTab()">
+      <ion-icon name="people" onclick="openSelectionTab()"></ion-icon>
     </div>
-    <p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p>
-    <p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p>
-    <p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p>
-    <p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p>
-    <p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p>
+    <div class="messeges">
+      <p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p>
+      <p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p>
+      <p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p>
+      <p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p>
+      <p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p>
+      <p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p>
+      <p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p>
+    </div>
     <div class="baseboard">
       <input type="text">
       <ion-icon name="paper-plane-outline"></ion-icon>
     </div>
+    
   </div>
+  <div class="sidebar">
+    <div class="sidebar-content">
+      <div class="contacts">
+        <div class="title"><p>Escolha um contato para enviar mensagem:</p></div>
+        <ul class="contacts-list">
+          <li>
+            <div>
+              <ion-icon name="people"></ion-icon>
+              <p>Todos</p>
+            </div>
+            <span><ion-icon name="checkmark"></ion-icon></span>
+          </li>
+          <li>
+            <div>
+              <ion-icon name="person-circle"></ion-icon>
+              <p>João</p>
+            </div>
+            <span><ion-icon name="checkmark"></ion-icon></span>
+          </li>
+          <li>
+            <div>
+              <ion-icon name="person-circle"></ion-icon>
+              <p>Maria</p>
+            </div>
+            <span><ion-icon name="checkmark"></ion-icon></span>
+          </li>
+        </ul>
+      </div>
+      <div class="visibility">
+        <div class="title"><p>Escolha a visibilidade:</p></div>
+        <ul class="options">
+          <li>Público</li>
+          <li>Reservadamente</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="greyed-out" onclick="openSelectionTab()"></div>
   <!--
     <ion-icon name="paper-plane-outline"></ion-icon>
     <ion-icon name="people"></ion-icon>
