@@ -10,22 +10,33 @@
   <title>Bate-Papo UOL</title>
 </head>
 <body>
+  <div class="login">
+    <img src="images/logo 2.png" alt="logo login">
+    <input type="text" placeholder="Digite seu nome" onclick="enterName(this)">
+    <button onclick="login(this)">Entrar</button>
+  </div>
   <div class="layout">
     <div class="header">
-      <img src="images/logo 1.png" alt="mobile logo" onclick="openSelectionTab()">
+      <img src="images/logo 1.png" alt="mobile logo">
       <ion-icon name="people" onclick="openSelectionTab()"></ion-icon>
     </div>
-    <div class="messeges">
-      <p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p>
-      <p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p>
-      <p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p>
-      <p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p>
-      <p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p>
-      <p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p>
-      <p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p><p>lorem</p>
+    <div class="messages">
+      <p class="esquerda">lorem</p><p class="esquerda">lorem</p><p class="esquerda">lorem</p>
+      <p class="esquerda">lorem</p><p class="esquerda">lorem</p><p class="esquerda">lorem</p>
+      <p class="esquerda">lorem</p>
+      <p class="esquerda">lorem</p><p class="direita">lorem</p><p class="direita">lorem</p>
+      <p class="direita">lorem</p>
+      <p class="esquerda">lorem</p><p class="esquerda">lorem</p><p class="direita">lorem</p>
+      <p class="esquerda">lorem</p><p class="esquerda">lorem</p>
+      <p class="esquerda">lorem</p><p class="esquerda">lorem</p><p class="esquerda">lorem</p>
+      <p class="direita">lorem</p><p class="direita">lorem</p><p class="esquerda">lorem</p>
+      <p class="esquerda">lorem</p><p class="esquerda">lorem</p><p class="esquerda">lorem</p><p class="esquerda">lorem</p>
     </div>
     <div class="baseboard">
-      <input type="text">
+      <div class="input-message">
+        <input type="text" placeholder="Escreva aqui...">
+        <p>Enviando para Maria (reservadamente)</p>
+      </div>
       <ion-icon name="paper-plane-outline"></ion-icon>
     </div>
     
@@ -33,41 +44,170 @@
   <div class="sidebar">
     <div class="sidebar-content">
       <div class="contacts">
-        <div class="title"><p>Escolha um contato para enviar mensagem:</p></div>
+        <h2 class="title">Escolha um contato para enviar mensagem:</h2>
         <ul class="contacts-list">
-          <li>
-            <div>
-              <ion-icon name="people"></ion-icon>
-              <p>Todos</p>
-            </div>
-            <span><ion-icon name="checkmark"></ion-icon></span>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="people"></ion-icon><p>Todos</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-selected"></ion-icon></span>
           </li>
-          <li>
-            <div>
-              <ion-icon name="person-circle"></ion-icon>
-              <p>João</p>
-            </div>
-            <span><ion-icon name="checkmark"></ion-icon></span>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle" ></ion-icon><p>João</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
           </li>
-          <li>
-            <div>
-              <ion-icon name="person-circle"></ion-icon>
-              <p>Maria</p>
-            </div>
-            <span><ion-icon name="checkmark"></ion-icon></span>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle"></ion-icon><p>Maria</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle" ></ion-icon><p>João</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle"></ion-icon><p>Maria</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle" ></ion-icon><p>João</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle"></ion-icon><p>Maria</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle" ></ion-icon><p>João</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle" ></ion-icon><p>João</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle"></ion-icon><p>Maria</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle" ></ion-icon><p>João</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle"></ion-icon><p>Maria</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle" ></ion-icon><p>João</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle"></ion-icon><p>Maria</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle" ></ion-icon><p>João</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle" ></ion-icon><p>João</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle"></ion-icon><p>Maria</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle" ></ion-icon><p>João</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle"></ion-icon><p>Maria</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle" ></ion-icon><p>João</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle"></ion-icon><p>Maria</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle" ></ion-icon><p>João</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle" ></ion-icon><p>João</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle"></ion-icon><p>Maria</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle" ></ion-icon><p>João</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle"></ion-icon><p>Maria</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle" ></ion-icon><p>João</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle"></ion-icon><p>Maria</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle" ></ion-icon><p>João</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle" ></ion-icon><p>João</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle"></ion-icon><p>Maria</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle" ></ion-icon><p>João</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle"></ion-icon><p>Maria</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle" ></ion-icon><p>João</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle"></ion-icon><p>Maria</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+          <li onclick="selectContact(this)">
+            <div><ion-icon name="person-circle" ></ion-icon><p>João</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
           </li>
         </ul>
       </div>
       <div class="visibility">
-        <div class="title"><p>Escolha a visibilidade:</p></div>
+        <h2 class="title">Escolha a visibilidade:</h2>
         <ul class="options">
-          <li>Público</li>
-          <li>Reservadamente</li>
+          <li class="public" onclick="selectOption(this)">
+            <div><ion-icon name="lock-closed"></ion-icon><p>Público</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-selected"></ion-icon></span>
+          </li>
+          <li class="private" onclick="selectOption(this)"> 
+            <div><ion-icon name="lock-open"></ion-icon><p>Reservadamente</p></div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
         </ul>
       </div>
     </div>
   </div>
-  <div class="greyed-out" onclick="openSelectionTab()"></div>
+  <div class="sidebar-background" onclick="openSelectionTab()"></div>
   <!--
     <ion-icon name="paper-plane-outline"></ion-icon>
     <ion-icon name="people"></ion-icon>
