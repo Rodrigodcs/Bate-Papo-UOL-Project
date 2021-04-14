@@ -1,13 +1,52 @@
 let destination = "todos";
 let typeOfMessage = "publicamente";
+let userName = "";
 
-function enterName(enter){
-  enter.setAttribute("placeholder", "");
-}
-function login(button){
-  button.parentNode.classList.add("gone")
-}
 
+document.querySelector(".login input").addEventListener("keyup",function(event){
+  if(event.keyCode === 13){
+    event.preventDefault();
+    document.querySelector(".login button").click();
+  }
+});
+function verify(){
+  document.querySelector(".input").classList.add("hide") 
+  document.querySelector(".loading").classList.remove("hide") 
+  userName = document.querySelector(".login input").value;
+  const promisse = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/participants",{name:userName})
+  promisse.then(accepted);
+  promisse.catch(error);
+  
+}
+function error(response){
+  if(response.response.status===400){
+    document.querySelector(".input").classList.remove("hide") 
+    document.querySelector(".loading").classList.add("hide")
+    document.querySelector(".input p").classList.remove("hide") 
+  }else if(response.response.status===404){
+    alert("Servidor não encontrado")
+    window.location.reload()
+  }else{
+    alert("Ocorreu um erro inesperado")
+    window.location.reload()
+  }  
+}
+function accepted(response){
+  console.log(response)
+  login()
+}
+function login(){
+  document.querySelector(".login").classList.add("hide")
+  setInterval(userStatus,5000)
+}
+function userStatus(){
+  const promisse = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/status",{name:userName})
+  promisse.then(checked);
+  promisse.catch(error);
+}
+function checked(response){
+  console.log(response)
+}
 
 function openSelectionTab(){
   document.querySelector(".sidebar-background").classList.toggle("show");
