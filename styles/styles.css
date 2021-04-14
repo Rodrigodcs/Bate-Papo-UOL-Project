@@ -3,7 +3,7 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: #f3f3f3;
 }
-.messeges p {
+.messages p {
   margin-top: 20px;
   border-radius: 5px;
   width: 100px;
@@ -71,7 +71,7 @@ body {
   background-color: white;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
 }
-.messeges {
+.messages {
   border: 1px solid black;
 }
 .baseboard {

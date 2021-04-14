@@ -1,3 +1,6 @@
+let destination = "todos";
+let typeOfMessage = "publicamente";
+
 function enterName(enter){
   enter.setAttribute("placeholder", "");
 }
@@ -17,6 +20,8 @@ function selectContact(contactSelected){
   }
   contactSelected.querySelector("span ion-icon").classList.add("checkmark-selected")
   contactSelected.querySelector("span ion-icon").classList.remove("checkmark-not-selected")
+  destination=contactSelected.querySelector("p").innerHTML;
+  sending(destination,typeOfMessage);
 }
 
 function selectOption(option){
@@ -29,4 +34,15 @@ function selectOption(option){
   option.querySelector("ion-icon").setAttribute("name","lock-closed");
   option.querySelector("span ion-icon").classList.add("checkmark-selected")
   option.querySelector("span ion-icon").classList.remove("checkmark-not-selected")
+  if(option.querySelector("p").innerHTML==="Reservadamente"){
+    typeOfMessage="reservadamente";
+  }else{
+    typeOfMessage="publicamente";
+  }
+  sending(destination,typeOfMessage);
 }
+sending(destination,typeOfMessage);
+function sending(name,type){
+  document.querySelector(".input-message p").innerHTML = `Enviando para ${name} (${type})` 
+}
+

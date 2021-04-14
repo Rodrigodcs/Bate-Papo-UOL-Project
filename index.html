@@ -12,7 +12,7 @@
 <body>
   <div class="login">
     <img src="images/logo 2.png" alt="logo login">
-    <input type="text" placeholder="Digite seu nome" onclick="enterName(this)">
+    <input type="text" placeholder="Digite seu nome" onclick="enterName(this)" onchange="if (this.value == '') {this.placeholder = 'hello';}">
     <button onclick="login(this)">Entrar</button>
   </div>
   <div class="layout">
