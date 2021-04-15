@@ -3,6 +3,7 @@ let typeOfMessage = "publicamente";
 let messageType="message";
 let userName = "";
 let messageTyped="";
+let destinationStillOnline = false;
 
 
 document.querySelector(".login input").addEventListener("keyup",log);
@@ -20,6 +21,19 @@ function send(event){
   }
 }
 
+document.querySelector(".login input").addEventListener("focusin",vanishPlaceholder);
+function vanishPlaceholder(){
+  document.querySelector(".login input").setAttribute("placeholder","")
+  document.querySelector(".input-message input").setAttribute("placeholder","")
+}
+document.querySelector(".login input").addEventListener("focusout",appearPlaceholder);
+function appearPlaceholder(){
+  document.querySelector(".login input").setAttribute("placeholder","Digite seu nome")
+  document.querySelector(".input-message input").setAttribute("placeholder","Escreva aqui...")
+}
+document.querySelector(".input-message input").addEventListener("focusin",vanishPlaceholder);
+document.querySelector(".input-message input").addEventListener("focusout",appearPlaceholder);
+
 function verify(){
   document.querySelector(".input").classList.add("hide") 
   document.querySelector(".loading").classList.remove("hide") 
@@ -28,8 +42,8 @@ function verify(){
   const promisse = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/participants",{name:userName})
   promisse.then(accepted);
   promisse.catch(error);
-  
 }
+
 function error(response){
   if(response.response.status===400){
     document.querySelector(".input").classList.remove("hide") 
@@ -43,17 +57,18 @@ function error(response){
     window.location.reload()
   }  
 }
+
 function accepted(response){
-  console.log(response)
   login()
 }
+
 function login(){
   document.querySelector(".login").classList.add("hide")
   setInterval(userStatus,5000);
   setInterval(loadMessages,3000);
-  setInterval(loadUsers,5000);
-  
+  setInterval(loadUsers,10000);
 }
+
 function userStatus(){
   const promisse = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/status",{name:userName})
   //promisse.then(checked);
@@ -64,24 +79,24 @@ function loadMessages(){
   const promisse = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/messages")
   promisse.then(printMessages)
 }
+
 function printMessages(response){
   document.querySelector(".messages").innerHTML="";
-  console.log(response)
   for(i=0;i<100;i++){
     if(response.data[i].type==="status"){
       document.querySelector(".messages").innerHTML +=`<li class="status-background">
       <span class="time">${response.data[i].time}</span><strong> ${response.data[i].from} </strong>para<strong> ${response.data[i].to}</strong>: ${response.data[i].text}
-    </li>`
+      </li>`
     }
     if(response.data[i].type==="message"){
       document.querySelector(".messages").innerHTML +=`<li class="public-background">
       <span class="time">${response.data[i].time}</span><strong> ${response.data[i].from} </strong>para<strong> ${response.data[i].to}</strong>: ${response.data[i].text}
-    </li>`
+      </li>`
     }
-    if(response.data[i].type==="private_message"){ //FALTA ARRUMAR PARA NAO RECEBER DOS OUTROS
+    if(response.data[i].type==="private_message" && (response.data[i].from===userName||response.data[i].to===userName)){
       document.querySelector(".messages").innerHTML +=`<li class="private-background">
       <span class="time">${response.data[i].time}</span><strong> ${response.data[i].from} </strong>reservadamente para<strong> ${response.data[i].to}</strong>: ${response.data[i].text}
-    </li>`
+      </li>`
     }
   }
   document.querySelector(".bottom").scrollIntoView();
@@ -91,25 +106,55 @@ function loadUsers(){
   const promisse = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/participants");
   promisse.then(printUsers)
 }
+
 function printUsers(response){
-  document.querySelector(".contacts-list").innerHTML=`<li onclick="selectContact(this)">
-    <div><ion-icon name="people"></ion-icon><p>Todos</p></div>
-    <span><ion-icon name="checkmark-sharp" class="checkmark-selected"></ion-icon></span>
-    </li>`;
-  console.log(response)
-  for(i=0;i<response.data.length;i++){
-    document.querySelector(".contacts-list").innerHTML +=`<li onclick="selectContact(this)">
-    <div><ion-icon name="person-circle" ></ion-icon><p>${response.data[i].name}</p></div>
-    <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
-  </li>`;
+  if(destination === "todos"){
+    document.querySelector(".contacts-list").innerHTML=`<li class="toAll" onclick="selectContact(this)">
+      <div><ion-icon name="people"></ion-icon><p>Todos</p></div>
+      <span><ion-icon name="checkmark-sharp" class="checkmark-selected"></ion-icon></span>
+      </li>`;
+    for(i=0;i<response.data.length;i++){
+      if(response.data[i].name===userName){
+      }else{
+        document.querySelector(".contacts-list").innerHTML +=`<li onclick="selectContact(this)">
+        <div><ion-icon name="person-circle" ></ion-icon><p>${response.data[i].name}</p></div>
+        <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+        </li>`;
+      }
+    }
+  }else{
+    document.querySelector(".contacts-list").innerHTML=`<li class="toAll" onclick="selectContact(this)">
+      <div><ion-icon name="people"></ion-icon><p>Todos</p></div>
+      <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+      </li>`;
+    for(i=0;i<response.data.length;i++){
+      if(response.data[i].name===userName){
+      }else if(response.data[i].name===destination){
+        document.querySelector(".contacts-list").innerHTML +=`<li onclick="selectContact(this)">
+        <div><ion-icon name="person-circle" ></ion-icon><p>${response.data[i].name}</p></div>
+        <span><ion-icon name="checkmark-sharp" class="checkmark-selected"></ion-icon></span>
+        </li>`;
+        destinationStillOnline=true;
+      }else{
+        document.querySelector(".contacts-list").innerHTML +=`<li onclick="selectContact(this)">
+        <div><ion-icon name="person-circle" ></ion-icon><p>${response.data[i].name}</p></div>
+        <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+        </li>`;
+      }
+    }
+    if(destinationStillOnline){
+      destinationStillOnline=false;
+    }else{
+      document.querySelector(".toAll").click();
+    }
   }
 }
-
 
 function openSelectionTab(){
   document.querySelector(".sidebar-background").classList.toggle("show");
   document.querySelector(".sidebar").classList.toggle("sidebar-show");
 } 
+
 function selectContact(contactSelected){
   if(document.querySelector(".contacts .checkmark-selected")!==null){
     document.querySelector(".checkmark-selected").classList.add("checkmark-not-selected")
@@ -140,15 +185,26 @@ function selectOption(option){
   }
   sending(destination,typeOfMessage);
 }
+
 sending(destination,typeOfMessage);
 function sending(name,type){
   document.querySelector(".input-message p").innerHTML = `Enviando para ${name} (${type})` 
 }
 
-
 function sendMessage(){
   messageTyped = document.querySelector(".baseboard input").value;
   document.querySelector(".baseboard input").value="";
   const promisse = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/messages",{from: userName,to:destination,text:messageTyped,type: messageType});
-  //promisse.then(sended)
+  promisse.then(sended)
+  promisse.catch(reload)
+}
+
+function sended(response){
+  const promisse = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/messages")
+  promisse.then(printMessages)
+}
+
+function reload(error){
+  alert("Usuário não está mais na sala")
+  window.location.reload()
 }
