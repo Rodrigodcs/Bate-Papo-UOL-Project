@@ -66,7 +66,7 @@ function login(){
   document.querySelector(".login").classList.add("hide")
   setInterval(userStatus,5000);
   setInterval(loadMessages,3000);
-  setInterval(loadUsers,10000);
+  setInterval(loadUsers,3000);
 }
 
 function userStatus(){
@@ -114,13 +114,13 @@ function printUsers(response){
       <span><ion-icon name="checkmark-sharp" class="checkmark-selected"></ion-icon></span>
       </li>`;
     for(i=0;i<response.data.length;i++){
-      if(response.data[i].name===userName){
-      }else{
+      /*if(response.data[i].name===userName){
+      }else{*/
         document.querySelector(".contacts-list").innerHTML +=`<li onclick="selectContact(this)">
         <div><ion-icon name="person-circle" ></ion-icon><p>${response.data[i].name}</p></div>
         <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
         </li>`;
-      }
+      
     }
   }else{
     document.querySelector(".contacts-list").innerHTML=`<li class="toAll" onclick="selectContact(this)">
@@ -128,8 +128,8 @@ function printUsers(response){
       <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
       </li>`;
     for(i=0;i<response.data.length;i++){
-      if(response.data[i].name===userName){
-      }else if(response.data[i].name===destination){
+      /*if(response.data[i].name===userName){
+      }else*/ if(response.data[i].name===destination){
         document.querySelector(".contacts-list").innerHTML +=`<li onclick="selectContact(this)">
         <div><ion-icon name="person-circle" ></ion-icon><p>${response.data[i].name}</p></div>
         <span><ion-icon name="checkmark-sharp" class="checkmark-selected"></ion-icon></span>
@@ -194,7 +194,8 @@ function sending(name,type){
 function sendMessage(){
   messageTyped = document.querySelector(".baseboard input").value;
   document.querySelector(".baseboard input").value="";
-  const promisse = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/messages",{from: userName,to:destination,text:messageTyped,type: messageType});
+  console.log(messageType)
+  const promisse = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/messages",{from: userName,to:destination,text: messageTyped,type: messageType});
   promisse.then(sended)
   promisse.catch(reload)
 }

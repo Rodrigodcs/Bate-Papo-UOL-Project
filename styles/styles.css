@@ -49,6 +49,7 @@ body {
   border: 1px solid #aeaeae;
 }
 .login button {
+  cursor: pointer;
   color: #696969;
   font-size: 18px;
   margin-top: 20px;
@@ -98,6 +99,9 @@ body {
   background-color: white;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
 }
+.header ion-icon {
+  cursor: pointer;
+}
 .messages {
   width: 100%;
 }
@@ -107,6 +111,12 @@ body {
   padding: 10px 10px;
   margin-top: 5px;
   line-height: 20px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+.messages li strong {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 .messages img {
   width: 100px;
@@ -167,6 +177,7 @@ strong {
   font-size: 14px;
 }
 .baseboard ion-icon {
+  cursor: pointer;
   font-size: 30px;
 }
 
@@ -227,6 +238,8 @@ strong {
 .sidebar-content p {
   margin: auto 0;
   margin-left: 5px;
+  max-width: 160px;
+  word-break: break-all;
 }
 .sidebar-content h2 {
   font-weight: 700;
@@ -239,13 +252,17 @@ strong {
   margin-top: 15px;
 }
 .sidebar-content li {
+  cursor: pointer;
   display: flex;
   align-items: center;
+  width: 210px;
   justify-content: space-between;
   margin-top: 5px;
 }
 .sidebar-content div {
+  width: 100%;
   display: flex;
+  align-items: center;
 }
 .checkmark-not-selected {
   color: white;
