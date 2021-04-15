@@ -5,22 +5,26 @@ let userName = "";
 let messageTyped="";
 
 
-document.querySelector(".listen").addEventListener("keyup",function(event){
-  if(event.keyCode === 13){
-    if(document.querySelector(".input-message input").value===""){
-      event.preventDefault();
-      document.querySelector(".login button").click();
-    }else{
-      document.querySelector(".baseboard ion-icon").click();
-    }
-    
+document.querySelector(".login input").addEventListener("keyup",log);
+function log(event){
+  if(event.keyCode===13){
+    event.preventDefault();
+    document.querySelector(".login button").click();
   }
-});
+}
+document.querySelector(".input-message input").addEventListener("keyup",send);
+function send(event){
+  if(event.keyCode===13){
+    event.preventDefault();
+    document.querySelector(".baseboard ion-icon").click();
+  }
+}
 
 function verify(){
   document.querySelector(".input").classList.add("hide") 
   document.querySelector(".loading").classList.remove("hide") 
   userName = document.querySelector(".login input").value;
+  document.querySelector(".login input").value="";
   const promisse = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/participants",{name:userName})
   promisse.then(accepted);
   promisse.catch(error);
@@ -76,7 +80,7 @@ function printMessages(response){
     }
     if(response.data[i].type==="private_message"){ //FALTA ARRUMAR PARA NAO RECEBER DOS OUTROS
       document.querySelector(".messages").innerHTML +=`<li class="private-background">
-      <span class="time">${response.data[i].time}</span><strong> ${response.data[i].from} </strong>para<strong> ${response.data[i].to}</strong>: ${response.data[i].text}
+      <span class="time">${response.data[i].time}</span><strong> ${response.data[i].from} </strong>reservadamente para<strong> ${response.data[i].to}</strong>: ${response.data[i].text}
     </li>`
     }
   }
@@ -103,7 +107,6 @@ function printUsers(response){
 
 
 function openSelectionTab(){
-
   document.querySelector(".sidebar-background").classList.toggle("show");
   document.querySelector(".sidebar").classList.toggle("sidebar-show");
 } 
