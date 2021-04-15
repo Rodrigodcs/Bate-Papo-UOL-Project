@@ -120,7 +120,7 @@ function printUsers(response){
         <div><ion-icon name="person-circle" ></ion-icon><p>${response.data[i].name}</p></div>
         <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
         </li>`;
-      
+      }
     }
   }else{
     document.querySelector(".contacts-list").innerHTML=`<li class="toAll" onclick="selectContact(this)">
@@ -188,7 +188,7 @@ function selectOption(option){
 
 sending(destination,typeOfMessage);
 function sending(name,type){
-  document.querySelector(".input-message div").innerHTML = `Enviando para <span>${name}</span> (${type})` 
+  document.querySelector(".input-message p").innerHTML = `Enviando para <span>${name}</span> (${type})` 
 }
 
 function sendMessage(){
