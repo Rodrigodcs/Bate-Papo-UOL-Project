@@ -14,11 +14,11 @@
     <img src="images/logo 2.png" alt="logo login">
     <div class="input">
       <p class="hide">Este nome já está sendo usado!</p>
-      <input type="text" placeholder="Digite seu nome">
+      <input class="listen" type="text" placeholder="Digite seu nome">
       <button onclick="verify()">Entrar</button>
     </div>
     <div class="loading hide">
-      <img src="gifs/loading.gif" alt="">
+      <img src="gifs/loading.gif" alt="loading gif">
       <p>Entrando...</p>
     </div>
     
@@ -28,24 +28,19 @@
       <img src="images/logo 1.png" alt="mobile logo">
       <ion-icon name="people" onclick="openSelectionTab()"></ion-icon>
     </div>
-    <div class="messages">
-      <p class="esquerda">lorem</p><p class="esquerda">lorem</p><p class="esquerda">lorem</p>
-      <p class="esquerda">lorem</p><p class="esquerda">lorem</p><p class="esquerda">lorem</p>
-      <p class="esquerda">lorem</p>
-      <p class="esquerda">lorem</p><p class="direita">lorem</p><p class="direita">lorem</p>
-      <p class="direita">lorem</p>
-      <p class="esquerda">lorem</p><p class="esquerda">lorem</p><p class="direita">lorem</p>
-      <p class="esquerda">lorem</p><p class="esquerda">lorem</p>
-      <p class="esquerda">lorem</p><p class="esquerda">lorem</p><p class="esquerda">lorem</p>
-      <p class="direita">lorem</p><p class="direita">lorem</p><p class="esquerda">lorem</p>
-      <p class="esquerda">lorem</p><p class="esquerda">lorem</p><p class="esquerda">lorem</p><p class="esquerda">lorem</p>
-    </div>
+    <ul class="messages">
+      <div>
+        <img src="gifs/loading2.gif" alt="loading gif">
+        <p>CARREGANDO MENSAGENS</p> 
+      </div>
+    </ul>
+    <div class="bottom"></div>
     <div class="baseboard">
       <div class="input-message">
         <input type="text" placeholder="Escreva aqui...">
         <p>Enviando para Maria (reservadamente)</p>
       </div>
-      <ion-icon name="paper-plane-outline"></ion-icon>
+      <ion-icon class="sss" name="paper-plane-outline" onclick="sendMessage()"></ion-icon>
     </div>
   </div>
   <div class="sidebar">
@@ -53,26 +48,6 @@
       <div class="contacts">
         <h2 class="title">Escolha um contato para enviar mensagem:</h2>
         <ul class="contacts-list">
-          <li onclick="selectContact(this)">
-            <div><ion-icon name="people"></ion-icon><p>Todos</p></div>
-            <span><ion-icon name="checkmark-sharp" class="checkmark-selected"></ion-icon></span>
-          </li>
-          <li onclick="selectContact(this)">
-            <div><ion-icon name="person-circle" ></ion-icon><p>João</p></div>
-            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
-          </li>
-          <li onclick="selectContact(this)">
-            <div><ion-icon name="person-circle"></ion-icon><p>Maria</p></div>
-            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
-          </li>
-          <li onclick="selectContact(this)">
-            <div><ion-icon name="person-circle" ></ion-icon><p>João</p></div>
-            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
-          </li>
-          <li onclick="selectContact(this)">
-            <div><ion-icon name="person-circle"></ion-icon><p>Maria</p></div>
-            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
-          </li>
         </ul>
       </div>
       <div class="visibility">
@@ -91,14 +66,6 @@
     </div>
   </div>
   <div class="sidebar-background" onclick="openSelectionTab()"></div>
-  <!--
-    <ion-icon name="paper-plane-outline"></ion-icon>
-    <ion-icon name="people"></ion-icon>
-    <ion-icon name="person-circle"></ion-icon>
-    <ion-icon name="lock-open"></ion-icon>
-    <ion-icon name="lock-closed"></ion-icon>
-    <ion-icon name="checkmark"></ion-icon>
-  -->
 
   <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
