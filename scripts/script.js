@@ -188,7 +188,7 @@ function selectOption(option){
 
 sending(destination,typeOfMessage);
 function sending(name,type){
-  document.querySelector(".input-message p").innerHTML = `Enviando para ${name} (${type})` 
+  document.querySelector(".input-message div").innerHTML = `Enviando para <span>${name}</span> (${type})` 
 }
 
 function sendMessage(){
