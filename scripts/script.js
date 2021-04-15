@@ -114,8 +114,8 @@ function printUsers(response){
       <span><ion-icon name="checkmark-sharp" class="checkmark-selected"></ion-icon></span>
       </li>`;
     for(i=0;i<response.data.length;i++){
-      /*if(response.data[i].name===userName){
-      }else{*/
+      if(response.data[i].name===userName){
+      }else{
         document.querySelector(".contacts-list").innerHTML +=`<li onclick="selectContact(this)">
         <div><ion-icon name="person-circle" ></ion-icon><p>${response.data[i].name}</p></div>
         <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
@@ -128,8 +128,8 @@ function printUsers(response){
       <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
       </li>`;
     for(i=0;i<response.data.length;i++){
-      /*if(response.data[i].name===userName){
-      }else*/ if(response.data[i].name===destination){
+      if(response.data[i].name===userName){
+      }else if(response.data[i].name===destination){
         document.querySelector(".contacts-list").innerHTML +=`<li onclick="selectContact(this)">
         <div><ion-icon name="person-circle" ></ion-icon><p>${response.data[i].name}</p></div>
         <span><ion-icon name="checkmark-sharp" class="checkmark-selected"></ion-icon></span>
