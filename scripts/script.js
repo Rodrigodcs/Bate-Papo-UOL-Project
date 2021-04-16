@@ -4,6 +4,7 @@ let messageType="message";
 let userName = "";
 let messageTyped="";
 let destinationStillOnline = false;
+let firstMessageLoad = true; ///////
 
 
 document.querySelector(".login input").addEventListener("keyup",log);
@@ -20,6 +21,7 @@ function send(event){
     document.querySelector(".baseboard ion-icon").click();
   }
 }
+
 
 document.querySelector(".login input").addEventListener("focusin",vanishPlaceholder);
 function vanishPlaceholder(){
@@ -101,7 +103,10 @@ function printMessages(response){
       </li>`
     }
   }
-  document.querySelector(".bottom").scrollIntoView();
+  if(firstMessageLoad){///////
+    document.querySelector(".bottom").scrollIntoView();/////////
+    firstMessageLoad=false;/////////
+  }
 }
 
 function loadUsers(){
@@ -225,6 +230,7 @@ function sendMessage(){
 function sended(response){
   const promisse = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/messages")
   promisse.then(printMessages)
+  document.querySelector(".bottom").scrollIntoView();
 }
 
 function reload(error){
@@ -232,4 +238,19 @@ function reload(error){
   window.location.reload()
 }
 
+setInterval(scrolled,500);
 
+function scrolled(){
+  if((window.innerHeight + window.scrollY) >= document.body.offsetHeight){
+    document.querySelector(".bottom").scrollIntoView();
+    document.querySelector(".goDown").classList.add("hide");
+  }else{
+    document.querySelector(".goDown").classList.remove("hide");
+
+  }
+}
+
+function goAllTheWayDown(){
+  document.querySelector(".bottom").scrollIntoView();
+  document.querySelector(".goDown").classList.add("hide");
+}
