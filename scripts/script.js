@@ -221,6 +221,9 @@ function sending(name,type){
 
 function sendMessage(){
   messageTyped = document.querySelector(".baseboard input").value;
+  if(messageTyped===""){
+    return;
+  }
   document.querySelector(".baseboard input").value="";
   const promisse = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/messages",{from: userName,to:destination,text: messageTyped,type: messageType});
   promisse.then(sended)
@@ -238,10 +241,10 @@ function reload(error){
   window.location.reload()
 }
 
-setInterval(scrolled,500);
+setInterval(scrolled,1000);
 
 function scrolled(){
-  if((window.innerHeight + window.scrollY) >= document.body.offsetHeight){
+  if((window.innerHeight + window.scrollY) >= document.body.offsetHeight-200){
     document.querySelector(".bottom").scrollIntoView();
     document.querySelector(".goDown").classList.add("hide");
   }else{

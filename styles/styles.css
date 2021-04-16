@@ -2,6 +2,7 @@
 body {
   font-family: "Roboto", sans-serif;
   background-color: #f3f3f3;
+  user-select: none;
 }
 .messages p {
   margin-top: 20px;
@@ -101,6 +102,7 @@ body {
 }
 .header ion-icon {
   cursor: pointer;
+  user-select: none;
 }
 .messages {
   width: 100%;
@@ -316,4 +318,18 @@ strong {
 }
 .hide {
   display: none;
+}
+.bottom {
+  background-color: white;
+  width: 100%;
+  height: 1px;
+}
+@media (max-width: 614px) {
+  .goDown {
+    font-size: 10px;
+    padding: 0 3px;
+    right: 20px;
+    width: 110px;
+    height: 15px;
+  }
 }
