@@ -193,6 +193,7 @@ strong {
   display: flex;
   flex-wrap: nowrap;
   max-width: 150px;
+  height: 15px;
   margin: 0 5px;
   overflow-x: hidden;
   white-space: nowrap;
@@ -254,6 +255,7 @@ strong {
   max-height: 70%;
 }
 .sidebar-content p {
+  height: 18px;
   margin-left: 5px;
   max-width: 160px;
   overflow-x: hidden;
