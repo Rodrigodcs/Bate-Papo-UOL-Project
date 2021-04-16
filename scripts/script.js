@@ -246,7 +246,6 @@ function scrolled(){
     document.querySelector(".goDown").classList.add("hide");
   }else{
     document.querySelector(".goDown").classList.remove("hide");
-
   }
 }
 
