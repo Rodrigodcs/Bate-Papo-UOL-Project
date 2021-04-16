@@ -117,7 +117,6 @@ body {
 .messages li strong {
   word-wrap: break-word;
   overflow-wrap: break-word;
-  white-space: nowrap;
 }
 .messages img {
   width: 100px;

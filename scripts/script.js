@@ -64,9 +64,11 @@ function accepted(response){
 
 function login(){
   document.querySelector(".login").classList.add("hide")
+  loadMessages();
+  loadUsers();
   setInterval(userStatus,5000);
   setInterval(loadMessages,3000);
-  setInterval(loadUsers,3000);
+  setInterval(loadUsers,10000);
 }
 
 function userStatus(){
@@ -107,39 +109,60 @@ function loadUsers(){
   promisse.then(printUsers)
 }
 
+//Nao consegui diminuir essa função :(
 function printUsers(response){
   if(destination === "todos"){
-    document.querySelector(".contacts-list").innerHTML=`<li class="toAll" onclick="selectContact(this)">
-      <div><ion-icon name="people"></ion-icon><p>Todos</p></div>
-      <span><ion-icon name="checkmark-sharp" class="checkmark-selected"></ion-icon></span>
+    document.querySelector(".contacts-list").innerHTML=`
+      <li class="toAll" onclick="selectContact(this)">
+        <div>
+          <ion-icon name="people"></ion-icon>
+          <p>Todos</p>
+        </div>
+        <span><ion-icon name="checkmark-sharp" class="checkmark-selected"></ion-icon></span>
       </li>`;
     for(i=0;i<response.data.length;i++){
-      if(response.data[i].name===userName){
-      }else{
-        document.querySelector(".contacts-list").innerHTML +=`<li onclick="selectContact(this)">
-        <div><ion-icon name="person-circle" ></ion-icon><p>${response.data[i].name}</p></div>
-        <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
-        </li>`;
+      if(response.data[i].name!==userName){
+        document.querySelector(".contacts-list").innerHTML +=`
+          <li onclick="selectContact(this)">
+            <div>
+              <ion-icon name="person-circle" ></ion-icon>
+              <p>${response.data[i].name}</p>
+            </div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+        `;
       }
     }
   }else{
-    document.querySelector(".contacts-list").innerHTML=`<li class="toAll" onclick="selectContact(this)">
-      <div><ion-icon name="people"></ion-icon><p>Todos</p></div>
-      <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+    document.querySelector(".contacts-list").innerHTML=`
+      <li class="toAll" onclick="selectContact(this)">
+        <div>
+          <ion-icon name="people"></ion-icon>
+          <p>Todos</p>
+        </div>
+        <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
       </li>`;
     for(i=0;i<response.data.length;i++){
-      if(response.data[i].name===userName){
-      }else if(response.data[i].name===destination){
-        document.querySelector(".contacts-list").innerHTML +=`<li onclick="selectContact(this)">
-        <div><ion-icon name="person-circle" ></ion-icon><p>${response.data[i].name}</p></div>
-        <span><ion-icon name="checkmark-sharp" class="checkmark-selected"></ion-icon></span>
-        </li>`;
+      if(response.data[i].name===destination){
+        document.querySelector(".contacts-list").innerHTML +=`
+          <li onclick="selectContact(this)">
+            <div>
+              <ion-icon name="person-circle" ></ion-icon>
+              <p>${response.data[i].name}</p>
+            </div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-selected"></ion-icon></span>
+          </li>`;
         destinationStillOnline=true;
-      }else{
-        document.querySelector(".contacts-list").innerHTML +=`<li onclick="selectContact(this)">
-        <div><ion-icon name="person-circle" ></ion-icon><p>${response.data[i].name}</p></div>
-        <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
-        </li>`;
+      }else if(response.data[i].name !== userName){
+        document.querySelector(".contacts-list").innerHTML +=`
+          <li onclick="selectContact(this)">
+            <div>
+              <ion-icon name="person-circle" ></ion-icon>
+              <p>${response.data[i].name}</p>
+            </div>
+            <span><ion-icon name="checkmark-sharp" class="checkmark-not-selected"></ion-icon></span>
+          </li>
+        `;
       }
     }
     if(destinationStillOnline){
@@ -188,13 +211,12 @@ function selectOption(option){
 
 sending(destination,typeOfMessage);
 function sending(name,type){
-  document.querySelector(".input-message p").innerHTML = `Enviando para <span>${name}</span> (${type})` 
+  document.querySelector(".toWho").innerHTML = `<p>Enviando para</p><span>${name}</span><p>(${type})</p>` 
 }
 
 function sendMessage(){
   messageTyped = document.querySelector(".baseboard input").value;
   document.querySelector(".baseboard input").value="";
-  console.log(messageType)
   const promisse = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/messages",{from: userName,to:destination,text: messageTyped,type: messageType});
   promisse.then(sended)
   promisse.catch(reload)
@@ -209,3 +231,5 @@ function reload(error){
   alert("Usuário não está mais na sala")
   window.location.reload()
 }
+
+
