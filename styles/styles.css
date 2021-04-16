@@ -50,7 +50,6 @@ body {
   border: 1px solid #aeaeae;
 }
 .login button {
-  cursor: pointer;
   color: #696969;
   font-size: 18px;
   margin-top: 20px;
@@ -101,7 +100,6 @@ body {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 .header ion-icon {
-  cursor: pointer;
   user-select: none;
 }
 .messages {
@@ -189,7 +187,6 @@ strong {
 }
 .baseboard ion-icon {
   margin-left: 15px;
-  cursor: pointer;
   font-size: 30px;
 }
 .baseboard span {
@@ -257,11 +254,9 @@ strong {
   max-height: 70%;
 }
 .sidebar-content p {
-  margin: auto 0;
   margin-left: 5px;
   max-width: 160px;
   overflow-x: hidden;
-  white-space: nowrap;
   text-overflow: ellipsis;
 }
 .sidebar-content h2 {
@@ -275,7 +270,6 @@ strong {
   margin-top: 15px;
 }
 .sidebar-content li {
-  cursor: pointer;
   display: flex;
   align-items: center;
   width: 210px;
@@ -298,7 +292,6 @@ strong {
 
 .goDown {
   color: rgb(71, 71, 71);
-  cursor: pointer;
   font-size: 12px;
   position: fixed;
   display: flex;
